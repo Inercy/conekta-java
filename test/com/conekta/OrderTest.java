@@ -78,4 +78,14 @@ public class OrderTest extends ConektaTest{
         assertTrue(orderFound.currency.equals("MXN"));
         assertTrue((Boolean) orderFound.metadata.get("test"));
     }
+    
+    //@Test
+    public void testSuccesfulOrderWhere() throws Exception {
+        JSONObject paginateParams = new JSONObject("{'limit': 10}");
+        
+        ConektaList orders = Order.where(paginateParams);
+        
+        assertTrue(orders instanceof ConektaList);
+        assertTrue(orders.size() == 10);
+    }
 }
